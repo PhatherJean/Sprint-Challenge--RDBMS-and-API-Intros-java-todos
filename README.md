@@ -23,9 +23,20 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain your database schema, including how your database is "normalized".
+   for each user there is many tasks that can be assigned. Use unique ids and non nullable fields
+
 2. Explain how you connected your API to a database.
+   Using the services taking request from the controllers that was sent to the repository heading for the database and the response to be constructed the way the user requested before leaving the service section
+
 3. Explain the flow of data from the client through the backend system and back to the client.
+   request -> client -> controller-> repository -> service -> DB
+   response -> DB -> Service -> Repository -> controllers -> client
+
 4. Explain how the CRUD operations work in your application, including any custom SQL that was used.
+   create new users with task using POST
+   read what is on the DB using GET
+   update what is on the DB using PATCH/PUT
+   delete what is no longer needed by calling DELETE
 
 ## Instructions
 
@@ -51,6 +62,7 @@ You will be creating a REST api service to store and read data from an H2 databa
 - [ ] The initial application contains the model for the users table. Endpoints are already created and the structure for auditing fields is in place. You are adding the model for the todo table and updating the services to work with the new table.
 
 - [ ] **TODOS**
+
   - `todoid` primary key, not null long
   - `description` string, not null
   - `completed` boolean. Note that for all new todo, default completed to false
@@ -111,7 +123,6 @@ In your solution, it is essential that you follow best practices and produce cle
 - [ ] GET /users/users/todo - lists the number of todo each user has that are NOT completed. Use a custom query to accomplish this!
   - Users with 0 todo do NOT have to be included in the list
   - Order the list by username!
-  
 - [ ] Add in 100 more random users each with a random number (0 - 3) of random todo. The todo descriptions should be something random as well. For my example, I picked Pokemon names!
 
 ## Submission format
