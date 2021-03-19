@@ -8,13 +8,13 @@ import java.util.Set;
 
 @Entity
 @Table(name = "todos")
-public class Todo extends Auditable
+public class Todos extends Auditable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long todoid;
 
-    @Column(nullable = false)
+
     private String description;
 
     @Column(nullable = false)
@@ -27,20 +27,20 @@ public class Todo extends Auditable
     private User user;
 
 
-    public Todo()
+    public Todos()
     {
         //JPA use
     }
 
 
-    public Todo(User user, String description, boolean completed)
+    public Todos(User user, String description, boolean completed)
     {
         this.description = description;
         this.completed = completed;
         this.user = user;
     }
 
-    public Todo(User user, String description)
+    public Todos(User user, String description)
     {
         super();
     }
