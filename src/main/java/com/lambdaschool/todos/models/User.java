@@ -5,12 +5,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The entity allowing interaction with the users table
  */
+
 @Entity
 @Table(name = "users")
 public class User extends Auditable
@@ -48,14 +49,14 @@ public class User extends Auditable
     cascade = CascadeType.ALL,
     orphanRemoval = true)
     @JsonIgnoreProperties(value = "user", allowSetters = true)
-    private Set<Todos> todos = new HashSet<>();
+    private List<Todo> todos = new ArrayList<>();
 
-    public Set<Todos> getTodos()
+    public List<Todo> getTodos()
     {
         return todos;
     }
 
-    public void setTodos(Set<Todos> todos)
+    public void setTodos(List<Todo> todos)
     {
         this.todos = todos;
     }

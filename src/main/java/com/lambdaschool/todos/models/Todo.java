@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "todos")
-public class Todos extends Auditable
+public class Todo extends Auditable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,70 +20,60 @@ public class Todos extends Auditable
     @Column(nullable = false)
     private boolean completed = false;
 
+
     @ManyToOne
     @JoinColumn(name = "userid")
     @JsonIgnoreProperties(value = "todo", allowSetters = true)
-    private User users;
+    private User user;
 
 
-    public Todos()
+    public Todo()
     {
         //JPA use
     }
 
 
-    public Todos(User users, String description, boolean completed)
+    public Todo(User user, String description, boolean completed)
     {
         this.description = description;
         this.completed = completed;
-        this.users = users;
+        this.user = user;
     }
 
-    public Todos(User user, String description)
+    public Todo(User user, String description)
     {
         super();
     }
 
-    public long getTodoid()
-    {
+    public long getTodoid() {
         return todoid;
     }
 
-    public void setTodoid(long todoid)
-    {
+    public void setTodoid(long todoid) {
         this.todoid = todoid;
     }
 
-    public String getDescription()
-    {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description)
-    {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public boolean isCompleted()
-    {
+    public boolean isCompleted() {
         return completed;
     }
 
-    public void setCompleted(boolean completed)
-    {
-        boolean toggle = completed == true ? true : false;
-        this.completed = toggle;
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
-    public User getUsers()
-    {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers(User users)
-    {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
     }
-
-
 }
